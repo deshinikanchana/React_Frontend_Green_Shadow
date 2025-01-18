@@ -1,0 +1,15 @@
+h3{
+  @apply mb-1 text-gray-800;
+}
+
+p{
+  @apply text-2xl text-green-500;
+}
+
+h1{
+  @apply text-2xl text-chocolate mb-5;
+}
+
+h2{
+  @apply text-black justify-self-center;
+}

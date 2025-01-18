@@ -1,0 +1,28 @@
+.custom-table-td{
+  @apply p-2.5 text-left border border-gray-300 bg-mintcream shadow-sm font-fantasy text-sm;
+}
+.custom-table-th{
+  @apply p-2.5 text-left border border-gray-300 bg-white text-black shadow-sm font-bold;
+}
+.custom-table{
+  @apply w-full border-collapse mt-5 justify-self-center;
+}
+.add-new-btn{
+  @apply p-2.5 text-base bg-green-500 text-white border-0 cursor-pointer mb-5 ml-5 max-w-xs;
+}
+.add-new-btn:hover{
+  @apply bg-green-600;
+}
+
+.edit-btn{
+  @apply bg-[#007bff] text-white max-w-[150px];
+}
+.edit-btn:hover{
+  @apply cursor-pointer bg-[#004ea2];
+}
+.delete-btn{
+  @apply bg-[#dc3545] text-white max-w-[150px];
+}
+.delete-btn:hover{
+  @apply cursor-pointer bg-[#7c1d26];
+}

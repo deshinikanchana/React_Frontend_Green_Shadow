@@ -1,0 +1,12 @@
+h2{
+    @apply text-xl text-[#2c6e49];
+}
+
+p{
+    @apply text-[14px] text-[#666] mb-5;
+}
+
+label{
+    @apply text-[14px] mt-[10px] block font-bold;
+}
+
