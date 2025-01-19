@@ -1,68 +1,127 @@
-export function MonitoringLog(props,children) {
+import { useState, useEffect } from "react";
+
+export function MonitoringLog({ handleLogSubmit, logData, setLogData, children }) {
+    const [logCode, setLogCode] = useState('');
+    const [logDate, setLogDate] = useState('');
+    const [observation, setObservation] = useState('');
+    const [observedImage, setObservedImage] = useState('');
+    const [logField, setLogField] = useState([]);
+    const [logCrop, setLogCrop] = useState([]);
+    const [logStaff, setLogStaff] = useState([]);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setObservedImage(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    useEffect(() => {
+        if (logData) {
+            setLogCode(logData.log_code);
+            setLogDate(logData.log_date);
+            setObservation(logData.observation);
+            setObservedImage(logData.observed_image || '');
+            setLogField(logData.fields || []);
+            setLogCrop(logData.crops || []);
+            setLogStaff(logData.staff || []);
+        }
+    }, [logData]);
+
+    const handleSubmit = () => {
+        const newLog = {
+            log_code: logCode,
+            log_date: logDate,
+            observation: observation,
+            observed_image: observedImage,
+            fields: logField,
+            crops: logCrop,
+            staff: logStaff
+        };
+        handleLogSubmit(newLog);
+    };
+
     return (
         <>
-            <label>Log Code :</label>
-            <input type="text" placeholder="Log Code" onChange={(e) => props.setLogCode(e.target.value)}
-                   readOnly={true}/>
+            <div className="modal-container">
+                <div className="modal-content">
+                    <label>Log Code:</label>
+                    <input
+                        type="text"
+                        value={logCode}
+                        onChange={(e) => setLogCode(e.target.value)}
+                        readOnly={!!logData}
+                    />
 
-            <label>Log Date :</label>
-            <input type="text" placeholder="Log Date" onChange={(e) => props.setLogDate(e.target.value)}/>
+                    <label>Log Date:</label>
+                    <input
+                        type="text"
+                        value={logDate}
+                        onChange={(e) => setLogDate(e.target.value)}
+                    />
 
-            <label>Observation :</label>
-            <input type="text" placeholder="Observation" onChange={(e) => props.setObservation(e.target.value)}/>
+                    <label>Observation:</label>
+                    <input
+                        type="text"
+                        value={observation}
+                        onChange={(e) => setObservation(e.target.value)}
+                    />
 
-            <label>Observation Image :</label>
-            <input
-                type="file"
-                id="observed-image"
-                name="observed-image"
-                accept="image/*"
-                onChange={(e) => props.setObservedImage(e.target.value)}
-                required
-            />
+                    <label>Observation Image:</label>
+                    <input
+                        type="file"
+                        onChange={handleImageChange}/>
+                    {observedImage && <img src={observedImage} alt="Uploaded preview"/>}
+                    <label>Field Page:</label>
+                    <select
+                        multiple={true}
+                        value={logField}
+                        onChange={(e) => setLogField([...e.target.selectedOptions].map(option => option.value))}
+                    >
+                        <option value="Field 1">Field 1</option>
+                        <option value="Field 2">Field 2</option>
+                        <option value="Field 3">Field 3</option>
+                        <option value="Field 4">Field 4</option>
+                        <option value="Field 5">Field 5</option>
+                    </select>
 
-            <label>FieldPage :</label>
-            <select
-                onChange={(e) => props.setLogField(e.target.value)}
-                multiple={true}
-                required
-            >
-                <option value="FieldPage 1">FieldPage 1</option>
-                <option value="FieldPage 2">FieldPage 2</option>
-                <option value="FieldPage 3">FieldPage 3</option>
-                <option value="FieldPage 4">FieldPage 4</option>
-                <option value="FieldPage 5">FieldPage 5</option>
-            </select>
+                    <label>Crop:</label>
+                    <select
+                        multiple={true}
+                        value={logCrop}
+                        onChange={(e) => setLogCrop([...e.target.selectedOptions].map(option => option.value))}
+                    >
+                        <option value="Wheat">Wheat</option>
+                        <option value="Corn">Corn</option>
+                        <option value="Rice">Rice</option>
+                        <option value="Soybean">Soybean</option>
+                        <option value="Barley">Barley</option>
+                        <option value="Oats">Oats</option>
+                    </select>
 
-            <label>Crop :</label>
-            <select
-                onChange={(e) => props.setLogCrop(e.target.value)}
-                multiple={true}
-                required
-            >
-                <option value="Wheat">Wheat</option>
-                <option value="Corn">Corn</option>
-                <option value="Rice">Rice</option>
-                <option value="Soybean">Soybean</option>
-                <option value="Barley">Barley</option>
-                <option value="Oats">Oats</option>
-            </select>
+                    <label>Staff:</label>
+                    <select
+                        multiple={true}
+                        value={logStaff}
+                        onChange={(e) => setLogStaff([...e.target.selectedOptions].map(option => option.value))}
+                    >
+                        <option value="Kasun Perera">Kasun Perera</option>
+                        <option value="Saman Jayasinghe">Saman Jayasinghe</option>
+                        <option value="Nimali Fernando">Nimali Fernando</option>
+                        <option value="Chamil Rajapaksha">Chamil Rajapaksha</option>
+                        <option value="Rashmi Wijesinghe">Rashmi Wijesinghe</option>
+                    </select>
 
-            <label>Staff :</label>
-            <select
-                onChange={(e) => props.setLogStaff(e.target.value)}
-                multiple={true}
-                required
-            >
-                <option value="Kasun Perera">Kasun Perera</option>
-                <option value="Saman Jayasinghe">Saman Jayasinghe</option>
-                <option value="Nimali Fernando">Nimali Fernando</option>
-                <option value="Chamil Rajapaksha">Chamil Rajapaksha</option>
-                <option value="Rashmi Wijesinghe">Rashmi Wijesinghe</option>
-            </select>
-
-            <br/>
-            <button className="button" onClick={props.handleLogSubmit}>{props.children}</button>
+                    <br />
+                    <button className="save-btn" onClick={handleSubmit}>
+                        {children}
+                    </button>
+                </div>
+            </div>
         </>
     );
 }

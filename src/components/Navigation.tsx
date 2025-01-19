@@ -24,22 +24,11 @@ export function Navigation() {
                     <Link to='/equipment' className="custom-link">Equipments</Link>
                     <Link to='/log' className="custom-link">Logs</Link>
                     <Link to='/user' className="custom-link">User</Link>
-                    <Link to='/logout' className="custom-link">Log Out</Link>
+                    <Link to='/logout' className="custom-link" >Log Out</Link>
                 </ul>
             </nav>
             </header>
         </>
-        // <>
-        //     <header className="bg-blue-600 shadow-lg">
-        //         <nav className="px-4 py-3">
-        //             <ul className="flex text-white space-x-4">
-        //                 <Link to='/' className="custom-link">Dashboard</Link>
-        //                 <Link to='/add' className="custom-link">Add</Link>
-        //                 <Link to='/delete' className="custom-link">Delete</Link>
-        //                 <Link to='/update' className="custom-link">Update</Link>
-        //             </ul>
-        //         </nav>
-        //     </header>
-        // </>
+
     )
 }

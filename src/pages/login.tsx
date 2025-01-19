@@ -1,18 +1,19 @@
 import '../Css/LogIn.css'
 import {useState} from "react";
+import {useNavigate} from "react-router";
 
 export function LoginPage() {
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log(password);
+        navigate('/');
     }
 
     return (
-        <div className="flex max-w-[1200px] w-[80vw] h-[80vh] shadow-lg rounded-lg overflow-hidden">
+        <div className="loginDiv">
             <div className="bg-white flex-1 p-10 flex flex-col justify-center">
                 <h1 className="text-2xl font-bold mb-2">Green Shadow (PVT) Ltd.</h1>
                 <h2>welcome back</h2>

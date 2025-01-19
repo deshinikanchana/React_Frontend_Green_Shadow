@@ -12,6 +12,7 @@ export default {
       },
       fontFamily: {
         fantasy: ['fantasy', 'cursive'],
+        math: ['fantasy', 'cursive'],
       },
     },
   },

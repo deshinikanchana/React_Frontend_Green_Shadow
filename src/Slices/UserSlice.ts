@@ -18,25 +18,22 @@ export const initialState : User[] = [
         role: "Staff",
     }
 ];
-const UserSlice = createSlice({
-    name:'user',
+export const UserSlice = createSlice({
+    name: 'users',
     initialState,
-    reducers:{
-        AddUser: (state, action) => {
+    reducers: {
+        addUser: (state, action) => {
             state.push(action.payload);
         },
-        updateUser: (state, action: PayloadAction<User>) => {
-            const index = state.findIndex(user => user.email === action.payload.email);
-            if (index !== -1) {
-                state[index] = action.payload;
+        updateUserPassword: (state, action) => {
+            const { email, newPassword } = action.payload;
+            const user = state.find((user) => user.email === email);
+            if (user) {
+                user.password = newPassword;
             }
         },
-        deleteUser: (state, action: PayloadAction<string>) => {
-            return state.filter(user => user.email !== action.payload);
-        }
+    },
+});
 
-    }
-})
-
-export const {AddUser,updateUser,deleteUser} = UserSlice.actions;
+export const {addUser,updateUserPassword} = UserSlice.actions;
 export default UserSlice.reducer;

@@ -10,3 +10,6 @@ label{
     @apply text-[14px] mt-[10px] block font-bold;
 }
 
+.loginDiv{
+    @apply flex max-w-[1200px] w-[80vw] h-[80vh] shadow-lg rounded-lg overflow-hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+}

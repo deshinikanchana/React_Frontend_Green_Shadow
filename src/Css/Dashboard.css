@@ -7,7 +7,7 @@ p{
 }
 
 h1{
-  @apply text-2xl text-chocolate mb-5;
+  @apply mb-5 text-[2rem] font-math leading-[2rem] font-extrabold text-[#08805a];
 }
 
 h2{

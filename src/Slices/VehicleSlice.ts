@@ -38,18 +38,18 @@ const VehicleSlice = createSlice({
         AddVehicle: (state, action) => {
             state.push(action.payload);
         },
-        updateVehicle: (state, action: PayloadAction<Vehicle>) => {
+        UpdateVehicle: (state, action: PayloadAction<Vehicle>) => {
             const index = state.findIndex(vehicle => vehicle.vehicle_code === action.payload.vehicle_code);
             if (index !== -1) {
                 state[index] = action.payload;
             }
         },
-        deleteVehicle: (state, action: PayloadAction<string>) => {
+        DeleteVehicle: (state, action: PayloadAction<string>) => {
             return state.filter(vehicle => vehicle.vehicle_code !== action.payload);
         }
 
     }
 })
 
-export const {AddVehicle,updateVehicle,deleteVehicle} = VehicleSlice.actions;
+export const {AddVehicle,UpdateVehicle,DeleteVehicle} = VehicleSlice.actions;
 export default VehicleSlice.reducer;

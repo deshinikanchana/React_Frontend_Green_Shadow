@@ -26,3 +26,20 @@
 .delete-btn:hover{
   @apply cursor-pointer bg-[#7c1d26];
 }
+
+.modal-container {
+  @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50;
+}
+
+.modal-content {
+ @apply bg-white p-5 rounded-lg max-w-[500px] w-full overflow-scroll h-screen content-center;
+}
+
+button.save-btn {
+  @apply bg-green-500 text-white p-2.5 border-none rounded-md cursor-pointer;
+}
+
+button.save-btn:hover {
+  @apply cursor-pointer bg-green-800;
+}
+
