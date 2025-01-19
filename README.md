@@ -53,7 +53,7 @@ npm start
 ```
 ##
 #### Screenshots
-There are several screenchots of this project in the [Here](./Front-end-SS.docx) Document
+There are several screenchots of this project in the [Here](./Front-end-SS.pdf) Document
 #### License
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
