@@ -55,7 +55,7 @@ This will launch the application at http://localhost:3000.
 #
 
 ## 🖼️ Screenshots
-- The project includes several UI screenshots in the project documentation folder [here](/frontend ss.pdf).
+- The project includes several UI screenshots in the project documentation folder [here](Front-end-SS.pdf).
 
 ---
 
